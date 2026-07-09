@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * English (en) UI strings for real.com.tr.
+ * English (en) UI strings for My Blog.
  *
  * Every key here MUST have an identical counterpart in lang/tr.php.
  * Values may contain {placeholder} tokens replaced by __($key, ['placeholder' => ...]).
@@ -12,7 +12,7 @@ declare(strict_types=1);
  */
 return [
     // --- Branding ---------------------------------------------------------
-    'site_name'          => 'real.com.tr',
+    'site_name'          => 'My Blog',
     'site_tagline'       => 'Knowledge & encyclopedia platform',
 
     // --- Navigation -------------------------------------------------------
@@ -176,10 +176,10 @@ return [
     'contact_error'      => 'Your message could not be sent. Please try again later.',
 
     // --- Footer -----------------------------------------------------------
-    'footer_about'       => 'real.com.tr is a knowledge platform offering reliable, in-depth information across many fields, notably technology and history.',
+    'footer_about'       => 'My Blog is a knowledge platform offering reliable, in-depth information across many fields, notably technology and history.',
     'footer_links'       => 'Links',
     'footer_follow'      => 'Follow us',
-    'copyright'          => '© {year} real.com.tr — All rights reserved.',
+    'copyright'          => '© {year} My Blog — All rights reserved.',
 
     // --- Language switcher ------------------------------------------------
     'lang_tr'            => 'Türkçe',
@@ -209,7 +209,7 @@ return [
     'footer_rights'       => 'All rights reserved.',
 
     // --- About page ---
-    'about_lead'              => 'real.com.tr is a multilingual encyclopedia platform dedicated to free, accessible knowledge for everyone.',
+    'about_lead'              => 'My Blog is a multilingual encyclopedia platform dedicated to free, accessible knowledge for everyone.',
     'about_mission_title'     => 'Our Mission',
     'about_mission_body'      => 'To provide accurate, unbiased and well-sourced knowledge in Turkish and English, free of charge.',
     'about_editorial_title'   => 'Editorial Principles',

@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Application route table for real.com.tr.
+ * Application route table for My Blog.
  *
  * Required by public/index.php with the active App\Core\Router instance in
  * scope as $router. Every controller action reachable over HTTP is registered

@@ -369,7 +369,7 @@ final class AuthController extends BaseController
         $subject = __('reset_email_subject');
         $body    = __('reset_email_body', ['link' => $link]);
 
-        $from    = (string) ($_ENV['MAIL_FROM'] ?? 'no-reply@real.com.tr');
+        $from    = (string) ($_ENV['MAIL_FROM'] ?? 'no-reply@example.com');
         $headers = [
             'MIME-Version: 1.0',
             'Content-Type: text/plain; charset=UTF-8',

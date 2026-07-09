@@ -1,4 +1,4 @@
-# Integration & QA checklist — real.com.tr
+# Integration & QA checklist — My Blog
 
 Verified against the files on disk during the integration pass. `[x]` = confirmed
 true; `[ ]` = not satisfied / only partially satisfied (see note).

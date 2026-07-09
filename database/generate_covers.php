@@ -134,7 +134,7 @@ $render = static function (int $w, int $h, array $base, string $category, string
     // Wordmark bottom-left.
     $wmSize = 15 * $scale;
     $wmColor = imagecolorallocatealpha($img, 255, 255, 255, 30);
-    imagettftext($img, $wmSize, 0, $marginX, $h - (int) (26 * $scale), $wmColor, $fontBold, 'real.com.tr');
+    imagettftext($img, $wmSize, 0, $marginX, $h - (int) (26 * $scale), $wmColor, $fontBold, 'My Blog');
 
     ob_start();
     imagewebp($img, null, 86);
@@ -167,7 +167,7 @@ foreach ($rows as $r) {
 echo "  {$n} covers written.\n";
 
 /* --- Default OG share image (1200x630) ----------------------------------- */
-$og = $render(1200, 630, $default, 'real.com.tr', 'Bilgiye açılan kapınız');
+$og = $render(1200, 630, $default, 'My Blog', 'Bilgiye açılan kapınız');
 if (!is_dir($root . '/public/img')) { mkdir($root . '/public/img', 0755, true); }
 file_put_contents($root . '/public/img/og-default.jpg', $og); // WebP bytes; renamed below
 // Save a real JPEG version so the og:image content-type matches.

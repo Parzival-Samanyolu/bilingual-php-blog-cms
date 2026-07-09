@@ -36,7 +36,7 @@ final class PageController extends BaseController
      */
     public function contact(): void
     {
-        $email = SettingModel::get('contact_email', 'info@real.com.tr');
+        $email = SettingModel::get('contact_email', 'info@example.com');
 
         View::render('pages/contact', [
             'lang'         => Lang::getLang(),
@@ -80,10 +80,10 @@ final class PageController extends BaseController
             return;
         }
 
-        $to = SettingModel::get('contact_email', 'info@real.com.tr') ?? 'info@real.com.tr';
-        $from = $_ENV['MAIL_FROM'] ?? ('no-reply@' . ($_SERVER['SERVER_NAME'] ?? 'real.com.tr'));
+        $to = SettingModel::get('contact_email', 'info@example.com') ?? 'info@example.com';
+        $from = $_ENV['MAIL_FROM'] ?? ('no-reply@' . ($_SERVER['SERVER_NAME'] ?? 'example.com'));
 
-        $mailSubject = '[real.com.tr] ' . ($subject !== '' ? $subject : __('contact_page_title'));
+        $mailSubject = '[My Blog] ' . ($subject !== '' ? $subject : __('contact_page_title'));
 
         $body = "Ad / Name: {$name}\r\n"
             . "E-posta / Email: {$email}\r\n"

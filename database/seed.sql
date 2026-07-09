@@ -1,5 +1,5 @@
 -- ============================================================================
--- real.com.tr — Seed Data
+-- My Blog — Seed Data
 -- Run AFTER schema.sql. Uses explicit IDs so foreign keys resolve reliably.
 -- ============================================================================
 
@@ -16,7 +16,7 @@ SET NAMES utf8mb4;
 INSERT INTO `users`
   (`id`, `name`, `username`, `email`, `password_hash`, `role`, `is_approved`, `email_verified_at`, `preferred_lang`)
 VALUES
-  (1, 'Admin', 'admin', 'admin@real.com.tr',
+  (1, 'Admin', 'admin', 'admin@example.com',
    '$argon2id$v=19$m=65536,t=4,p=1$aENkMDAzbmJSTFhiWVdjRA$dkUWHST0iujlm1I3JPMvICKzrHS8QcYvpHYImpQVteE',
    'admin', 1, NOW(), 'tr');
 

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   real.com.tr — Public interactions (vanilla JS, no framework)
+   My Blog — Public interactions (vanilla JS, no framework)
    Selectors match the js-* hooks and component classes in the views.
    ========================================================================== */
 (function () {

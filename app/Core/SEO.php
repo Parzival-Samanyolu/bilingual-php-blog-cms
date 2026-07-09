@@ -17,7 +17,7 @@ use App\Models\SettingModel;
 final class SEO
 {
     /** Canonical fallback base URL when APP_URL is not configured (no trailing slash). */
-    private const DEFAULT_BASE_URL = 'https://www.real.com.tr';
+    private const DEFAULT_BASE_URL = 'https://www.example.com';
 
     /**
      * Echo all <head> SEO / social / analytics markup for the current page.
@@ -40,8 +40,8 @@ final class SEO
     {
         $settings = new SettingModel();
 
-        $siteName = $settings->get('site_name_' . Lang::getLang(), 'real.com.tr');
-        $siteName = ($siteName === null || $siteName === '') ? 'real.com.tr' : $siteName;
+        $siteName = $settings->get('site_name_' . Lang::getLang(), 'My Blog');
+        $siteName = ($siteName === null || $siteName === '') ? 'My Blog' : $siteName;
 
         $rawTitle    = trim((string) ($config['title'] ?? ''));
         $title       = $rawTitle !== ''

@@ -9,9 +9,9 @@ use App\Core\Session;
 use App\Models\SettingModel;
 
 $hdrLang = Lang::getLang();
-$siteName = SettingModel::get($hdrLang === 'en' ? 'site_name_en' : 'site_name_tr', 'real.com.tr');
+$siteName = SettingModel::get($hdrLang === 'en' ? 'site_name_en' : 'site_name_tr', 'My Blog');
 if ($siteName === null || $siteName === '') {
-    $siteName = 'real.com.tr';
+    $siteName = 'My Blog';
 }
 
 $searchAction = $hdrLang === 'en' ? '/search' : '/ara';

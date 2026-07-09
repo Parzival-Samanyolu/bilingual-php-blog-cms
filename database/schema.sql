@@ -1,5 +1,5 @@
 -- ============================================================================
--- real.com.tr — Database Schema
+-- My Blog — Database Schema
 -- Engine: InnoDB | Charset: utf8mb4 | Collation: utf8mb4_unicode_ci
 -- MySQL 8.x
 -- ============================================================================
@@ -244,12 +244,12 @@ SET foreign_key_checks = 1;
 -- Default settings
 -- ============================================================================
 INSERT INTO `settings` (`key`, `value`) VALUES
-  ('site_name_tr',      'real.com.tr'),
-  ('site_name_en',      'real.com.tr'),
+  ('site_name_tr',      'My Blog'),
+  ('site_name_en',      'My Blog'),
   ('adsense_client_id', ''),
   ('ga_measurement_id', ''),
   ('og_default_image',  '/img/og-default.jpg'),
-  ('contact_email',     'info@real.com.tr'),
+  ('contact_email',     'info@example.com'),
   ('articles_per_page', '12'),
   ('cache_ttl',         '3600')
 ON DUPLICATE KEY UPDATE `value` = VALUES(`value`);

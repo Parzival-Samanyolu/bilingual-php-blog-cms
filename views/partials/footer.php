@@ -8,9 +8,9 @@ use App\Models\CategoryModel;
 use App\Models\SettingModel;
 
 $ftLang = Lang::getLang();
-$siteName = SettingModel::get($ftLang === 'en' ? 'site_name_en' : 'site_name_tr', 'real.com.tr');
+$siteName = SettingModel::get($ftLang === 'en' ? 'site_name_en' : 'site_name_tr', 'My Blog');
 if ($siteName === null || $siteName === '') {
-    $siteName = 'real.com.tr';
+    $siteName = 'My Blog';
 }
 
 $roots = isset($categoryTree) && is_array($categoryTree)

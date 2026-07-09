@@ -144,7 +144,7 @@ textarea{min-height:90px;resize:vertical;}
 <body>
 <div class="admin-shell">
   <aside class="admin-sidebar" id="adminSidebar">
-    <div class="brand"><span>&#9632;</span> real.com.tr</div>
+    <div class="brand"><span>&#9632;</span> My Blog</div>
     <ul class="admin-nav">
       <li><a class="<?= $isActive('/admin') ?>" href="/admin"><span><span class="ico">&#128202;</span><?= e(__('admin_nav_dashboard')) ?></span></a></li>
       <li><a class="<?= $isActive('/admin/yazilar') ?>" href="/admin/yazilar"><span><span class="ico">&#128196;</span><?= e(__('admin_nav_articles')) ?></span><?php if ($pendingArticles > 0): ?><span class="badge"><?= (int) $pendingArticles ?></span><?php endif; ?></a></li>

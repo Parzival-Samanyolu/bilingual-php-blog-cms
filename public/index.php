@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Front controller for real.com.tr
+ * Front controller for My Blog
  *
  * Loads the environment, registers a PSR-4 autoloader for the App\ namespace,
  * wires up the global helper functions, loads the route table and dispatches.

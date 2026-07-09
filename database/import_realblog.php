@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * One-off importer: RealBlog (Node/SQLite export) -> real.com.tr (MySQL).
+ * One-off importer: RealBlog (Node/SQLite export) -> My Blog (MySQL).
  *
  * Reads the exported db/blog.sqlite3 and loads its categories + published posts
  * into our schema (categories/category_translations, articles/article_translations),

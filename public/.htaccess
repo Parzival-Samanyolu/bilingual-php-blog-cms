@@ -1,4 +1,4 @@
-# real.com.tr — front controller rewrite + security headers
+# My Blog — front controller rewrite + security headers
 
 <IfModule mod_rewrite.c>
     RewriteEngine On

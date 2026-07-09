@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Turkish (tr) UI strings for real.com.tr.
+ * Turkish (tr) UI strings for My Blog.
  *
  * Every key here MUST have an identical counterpart in lang/en.php.
  * Values may contain {placeholder} tokens replaced by __($key, ['placeholder' => ...]).
@@ -12,7 +12,7 @@ declare(strict_types=1);
  */
 return [
     // --- Branding ---------------------------------------------------------
-    'site_name'          => 'real.com.tr',
+    'site_name'          => 'My Blog',
     'site_tagline'       => 'Bilgi ve ansiklopedi platformu',
 
     // --- Navigation -------------------------------------------------------
@@ -176,10 +176,10 @@ return [
     'contact_error'      => 'Mesajınız gönderilemedi. Lütfen daha sonra tekrar deneyin.',
 
     // --- Footer -----------------------------------------------------------
-    'footer_about'       => 'real.com.tr, teknoloji ve tarih başta olmak üzere birçok alanda güvenilir ve derinlemesine bilgi sunan bilgi platformudur.',
+    'footer_about'       => 'My Blog, teknoloji ve tarih başta olmak üzere birçok alanda güvenilir ve derinlemesine bilgi sunan bilgi platformudur.',
     'footer_links'       => 'Bağlantılar',
     'footer_follow'      => 'Bizi takip edin',
-    'copyright'          => '© {year} real.com.tr — Tüm hakları saklıdır.',
+    'copyright'          => '© {year} My Blog — Tüm hakları saklıdır.',
 
     // --- Language switcher ------------------------------------------------
     'lang_tr'            => 'Türkçe',
@@ -209,7 +209,7 @@ return [
     'footer_rights'       => 'Tüm hakları saklıdır.',
 
     // --- About page ---
-    'about_lead'              => 'real.com.tr, herkes için özgür ve erişilebilir bilgi sunmayı amaçlayan çok dilli bir ansiklopedi platformudur.',
+    'about_lead'              => 'My Blog, herkes için özgür ve erişilebilir bilgi sunmayı amaçlayan çok dilli bir ansiklopedi platformudur.',
     'about_mission_title'     => 'Misyonumuz',
     'about_mission_body'      => 'Doğru, tarafsız ve kaynaklara dayalı bilgiyi Türkçe ve İngilizce olarak ücretsiz sunmak.',
     'about_editorial_title'   => 'Editöryel İlkeler',
