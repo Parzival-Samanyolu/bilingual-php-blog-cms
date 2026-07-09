@@ -1,0 +1,25 @@
+# Secrets — never commit the real environment file
+.env
+.env.*
+!.env.example
+
+# Local tooling / session state
+.claude/
+.remember/
+
+# File-based HTML cache (runtime)
+/cache/*
+!/cache/.gitkeep
+
+# User-uploaded media — not part of the template
+/public/uploads/*
+!/public/uploads/.htaccess
+!/public/uploads/.gitkeep
+
+# Internal build notes
+real-comtr-orchestrator.md
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
