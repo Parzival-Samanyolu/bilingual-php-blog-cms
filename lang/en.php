@@ -308,4 +308,10 @@ return [
     // --- Count labels (use a {count} placeholder) ---
     'label_article_count'  => '{count} articles',
     'search_result_count'  => '{count} results found',
+
+    // --- Auth: password reset ---
+    'reset_password_title' => 'Reset password',
+    'reset_password_intro' => 'Enter your email and we will send you a reset link.',
+    'new_password_title'   => 'Set a new password',
+    'btn_send'             => 'Send',
 ];

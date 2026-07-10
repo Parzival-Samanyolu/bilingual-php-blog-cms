@@ -1,7 +1,6 @@
 <?php
 /**
  * Login form. Rendered in the main layout.
- * Minimal correct version created during Integration/QA (original was missing).
  *
  * @var array $old  previously submitted values (email)
  */
@@ -10,34 +9,33 @@ use App\Core\Session;
 
 $old = $old ?? [];
 ?>
-<section class="auth-page" style="max-width:420px;margin:2.5rem auto;padding:0 1rem;">
-  <h1 style="font-size:1.5rem;"><?= e(__('nav_login')) ?></h1>
-
-  <form method="post" action="/giris" class="auth-form" style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem;">
+<div class="auth-page">
+  <form method="post" action="/giris" class="auth-form">
+    <h1><?= e(__('login_title')) ?></h1>
     <input type="hidden" name="_csrf" value="<?= e(Session::getToken()) ?>">
 
-    <label>
-      <span><?= e(__('contact_field_email')) ?></span>
-      <input type="email" name="email" required autocomplete="email"
-             value="<?= e((string) ($old['email'] ?? '')) ?>"
-             style="width:100%;padding:.6rem;border:1px solid #cbd5e1;border-radius:7px;">
-    </label>
+    <div class="form-field">
+      <label class="form-field__label" for="email"><?= e(__('label_email')) ?></label>
+      <input class="form-field__input" id="email" type="email" name="email" required
+             autocomplete="email" value="<?= e((string) ($old['email'] ?? '')) ?>">
+    </div>
 
-    <label>
-      <span>Parola / Password</span>
-      <input type="password" name="password" required autocomplete="current-password"
-             style="width:100%;padding:.6rem;border:1px solid #cbd5e1;border-radius:7px;">
-    </label>
+    <div class="form-field">
+      <label class="form-field__label" for="password"><?= e(__('label_password')) ?></label>
+      <input class="form-field__input" id="password" type="password" name="password" required
+             autocomplete="current-password">
+    </div>
 
-    <button type="submit" class="btn btn--primary"
-            style="padding:.65rem;background:#2563eb;color:#fff;border:0;border-radius:7px;cursor:pointer;font-size:1rem;">
-      <?= e(__('nav_login')) ?>
-    </button>
+    <div class="form-actions">
+      <button type="submit" class="btn btn--primary btn-block"><?= e(__('btn_login')) ?></button>
+    </div>
+
+    <p class="auth-sep"><span><?= e(__('or_continue_with')) ?></span></p>
+    <a class="btn btn-secondary btn-block" href="/auth/google"><?= e(__('login_with_google')) ?></a>
+
+    <p class="auth-links-row">
+      <a href="/sifre-sifirla"><?= e(__('forgot_password')) ?></a>
+      <a href="/kayit"><?= e(__('no_account')) ?></a>
+    </p>
   </form>
-
-  <p style="margin-top:1rem;">
-    <a href="/auth/google">Google</a>
-    &middot; <a href="/sifre-sifirla">Parolamı unuttum / Forgot password</a>
-  </p>
-  <p><a href="/kayit"><?= e(__('nav_register')) ?></a></p>
-</section>
+</div>

@@ -308,4 +308,10 @@ return [
     // --- Count labels (use a {count} placeholder) ---
     'label_article_count'  => '{count} makale',
     'search_result_count'  => '{count} sonuç bulundu',
+
+    // --- Auth: password reset ---
+    'reset_password_title' => 'Parola sıfırlama',
+    'reset_password_intro' => 'E-posta adresinizi girin, size bir sıfırlama bağlantısı gönderelim.',
+    'new_password_title'   => 'Yeni parola belirle',
+    'btn_send'             => 'Gönder',
 ];
