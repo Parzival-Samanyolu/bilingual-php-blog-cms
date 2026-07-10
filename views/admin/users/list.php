@@ -1,7 +1,6 @@
 <?php
 /**
  * Admin user management. Rendered in the admin layout.
- * Minimal correct version created during Integration/QA (original was missing).
  *
  * @var array                 $users
  * @var \App\Core\Pagination  $pagination
@@ -15,9 +14,9 @@ $token = Session::getToken();
 $roles = ['admin', 'author', 'reader'];
 $apprLabel = static function (int $v): array {
     return match ($v) {
-        1 => ['yes', 'onaylı'],
-        -1 => ['ban', 'yasaklı'],
-        default => ['no', 'beklemede'],
+        1  => ['yes', __('label_approved')],
+        -1 => ['ban', __('label_banned')],
+        default => ['no', __('label_pending')],
     };
 };
 ?>
@@ -25,7 +24,7 @@ $apprLabel = static function (int $v): array {
 
 <form class="filters" method="get" action="/admin/kullanicilar">
   <div class="field">
-    <label for="f-role"><?= e(__('admin_col_role') ?: 'Role') ?></label>
+    <label for="f-role"><?= e(__('admin_col_role')) ?></label>
     <select id="f-role" name="role">
       <option value=""><?= e(__('admin_filter_all')) ?></option>
       <?php foreach ($roles as $r): ?>
@@ -34,12 +33,12 @@ $apprLabel = static function (int $v): array {
     </select>
   </div>
   <div class="field">
-    <label for="f-appr">Durum</label>
+    <label for="f-appr"><?= e(__('admin_col_status')) ?></label>
     <select id="f-appr" name="is_approved">
       <option value=""><?= e(__('admin_filter_all')) ?></option>
-      <option value="1" <?= ($filters['is_approved'] ?? null) === 1 ? 'selected' : '' ?>>Onaylı</option>
-      <option value="0" <?= ($filters['is_approved'] ?? null) === 0 ? 'selected' : '' ?>>Beklemede</option>
-      <option value="-1" <?= ($filters['is_approved'] ?? null) === -1 ? 'selected' : '' ?>>Yasaklı</option>
+      <option value="1" <?= ($filters['is_approved'] ?? null) === 1 ? 'selected' : '' ?>><?= e(__('label_approved')) ?></option>
+      <option value="0" <?= ($filters['is_approved'] ?? null) === 0 ? 'selected' : '' ?>><?= e(__('label_pending')) ?></option>
+      <option value="-1" <?= ($filters['is_approved'] ?? null) === -1 ? 'selected' : '' ?>><?= e(__('label_banned')) ?></option>
     </select>
   </div>
   <div class="field">
@@ -50,7 +49,7 @@ $apprLabel = static function (int $v): array {
 <div class="table-wrap">
   <table class="data">
     <thead><tr>
-      <th>Ad</th><th>Kullanıcı</th><th>E-posta</th><th>Rol</th><th>Durum</th><th><?= e(__('admin_col_actions')) ?></th>
+      <th><?= e(__('admin_col_name')) ?></th><th><?= e(__('admin_col_user')) ?></th><th><?= e(__('label_email')) ?></th><th><?= e(__('admin_col_role')) ?></th><th><?= e(__('admin_col_status')) ?></th><th><?= e(__('admin_col_actions')) ?></th>
     </tr></thead>
     <tbody>
     <?php if ($users === []): ?>
@@ -66,7 +65,7 @@ $apprLabel = static function (int $v): array {
           <?php if ((int) $u['is_approved'] === 0): ?>
             <form method="post" action="/admin/kullanicilar/<?= $uid ?>/onayla">
               <input type="hidden" name="_csrf" value="<?= e($token) ?>">
-              <button class="btn btn-sm btn-success" type="submit"><?= e(__('admin_action_approve') ?: 'Onayla') ?></button>
+              <button class="btn btn-sm btn-success" type="submit"><?= e(__('admin_action_approve')) ?></button>
             </form>
           <?php endif; ?>
           <form method="post" action="/admin/kullanicilar/<?= $uid ?>/rol" class="field-inline">
@@ -76,13 +75,13 @@ $apprLabel = static function (int $v): array {
                 <option value="<?= e($r) ?>" <?= (string) $u['role'] === $r ? 'selected' : '' ?>><?= e($r) ?></option>
               <?php endforeach; ?>
             </select>
-            <button class="btn btn-sm" type="submit">Rol</button>
+            <button class="btn btn-sm" type="submit"><?= e(__('admin_action_role')) ?></button>
           </form>
           <?php if ($uid !== $currentUserId): ?>
             <?php if ((int) $u['is_approved'] !== -1): ?>
               <form method="post" action="/admin/kullanicilar/<?= $uid ?>/ban">
                 <input type="hidden" name="_csrf" value="<?= e($token) ?>">
-                <button class="btn btn-sm" type="submit">Yasakla</button>
+                <button class="btn btn-sm" type="submit"><?= e(__('admin_action_ban')) ?></button>
               </form>
             <?php endif; ?>
             <form method="post" action="/admin/kullanicilar/<?= $uid ?>/sil" onsubmit="return confirm('<?= e(__('admin_confirm_delete')) ?>');">

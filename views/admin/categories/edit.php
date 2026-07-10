@@ -63,7 +63,7 @@ $currentParent = $category['parent_id'] ?? null;
     </div>
   </div>
 
-  <div style="display:flex;gap:.75rem;margin-bottom:2rem;">
+  <div class="admin-actions-bar">
     <button class="btn btn-primary" type="submit"><?= e(__('admin_action_save')) ?></button>
     <a class="btn" href="/admin/kategoriler"><?= e(__('admin_action_cancel')) ?></a>
   </div>

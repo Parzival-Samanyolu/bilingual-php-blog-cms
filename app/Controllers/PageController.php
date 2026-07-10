@@ -83,7 +83,8 @@ final class PageController extends BaseController
         $to = SettingModel::get('contact_email', 'info@example.com') ?? 'info@example.com';
         $from = $_ENV['MAIL_FROM'] ?? ('no-reply@' . ($_SERVER['SERVER_NAME'] ?? 'example.com'));
 
-        $mailSubject = '[My Blog] ' . ($subject !== '' ? $subject : __('contact_page_title'));
+        $brand = SettingModel::get('site_name_' . Lang::getLang()) ?: (SettingModel::get('site_name_tr') ?: 'My Blog');
+        $mailSubject = '[' . $brand . '] ' . ($subject !== '' ? $subject : __('contact_page_title'));
 
         $body = "Ad / Name: {$name}\r\n"
             . "E-posta / Email: {$email}\r\n"

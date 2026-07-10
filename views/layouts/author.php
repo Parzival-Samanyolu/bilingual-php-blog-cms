@@ -14,10 +14,12 @@
 
 use App\Core\Lang;
 use App\Core\Session;
+use App\Models\SettingModel;
 
 $authorUser = Session::getUser();
 $flashes    = Session::getFlash();
 $pageTitle  = isset($title) ? (string) $title : __('dashboard_title');
+$brand      = SettingModel::get('site_name_' . Lang::getLang()) ?: (SettingModel::get('site_name_tr') ?: 'My Blog');
 $currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
 ?>
 <!doctype html>
@@ -27,7 +29,7 @@ $currentPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="csrf-token" content="<?= e(Session::getToken()) ?>">
 <meta name="robots" content="noindex, nofollow">
-<title><?= e($pageTitle) ?> — My Blog</title>
+<title><?= e($pageTitle) ?> — <?= e($brand) ?></title>
 <link rel="stylesheet" href="/css/main.css">
 <link rel="stylesheet" href="https://cdn.quilljs.com/1.3.7/quill.snow.css" crossorigin="anonymous">
 <script defer src="https://cdn.quilljs.com/1.3.7/quill.min.js" crossorigin="anonymous"></script>
@@ -84,7 +86,7 @@ textarea{min-height:80px;resize:vertical;}
 </head>
 <body>
 <header class="author-top">
-  <span class="brand">My Blog &middot; <?= e(__('nav_dashboard')) ?></span>
+  <span class="brand"><?= e($brand) ?> &middot; <?= e(__('nav_dashboard')) ?></span>
   <nav>
     <a href="/yazar-paneli"><?= e(__('nav_dashboard')) ?></a>
     <a href="/yazar-paneli/yeni"><?= e(__('editor_new_title')) ?></a>

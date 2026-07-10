@@ -31,7 +31,7 @@ $renderRows = static function (array $nodes, int $depth, callable $self): string
 ?>
 <h1><?= e(__('admin_categories')) ?></h1>
 
-<div style="margin-bottom:1.25rem;">
+<div class="admin-mb">
   <a class="btn btn-primary" href="/admin/kategoriler/yeni"><?= e(__('admin_category_new')) ?></a>
 </div>
 

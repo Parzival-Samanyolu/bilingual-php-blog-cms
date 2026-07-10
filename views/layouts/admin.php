@@ -132,6 +132,19 @@ textarea{min-height:90px;resize:vertical;}
 .empty{padding:2rem;text-align:center;color:#94a3b8;}
 .field-inline{display:flex;gap:.4rem;align-items:center;}
 .field-inline input{min-width:0;}
+.inline-form{display:flex;flex-wrap:wrap;gap:.6rem;align-items:flex-end;margin:0;}
+.inline-form--grow{flex:1;}
+.inline-form .field{display:flex;flex-direction:column;gap:.25rem;}
+.inline-form label{font-size:.78rem;color:#64748b;font-weight:600;}
+.admin-actions-bar{display:flex;gap:.75rem;margin-bottom:2rem;}
+.admin-img-preview{max-width:100%;border-radius:8px;margin-bottom:.6rem;}
+.admin-editor-host{background:#fff;min-height:260px;}
+.admin-topbar__spacer{flex:1;}
+.admin-sidebar__foot{padding:1rem 1.25rem;border-top:1px solid var(--admin-hover);}
+.admin-sidebar__foot a{color:var(--admin-muted);font-size:.85rem;}
+.admin-mb{margin-bottom:1.25rem;}
+.admin-pagination{display:flex;gap:.35rem;flex-wrap:wrap;justify-content:center;margin-top:1.25rem;}
+.admin-pagination .is-disabled{opacity:.5;cursor:default;}
 @media(max-width:820px){
 .grid-2{grid-template-columns:1fr;}
 .admin-sidebar{transform:translateX(-100%);transition:transform .2s;}
@@ -144,7 +157,7 @@ textarea{min-height:90px;resize:vertical;}
 <body>
 <div class="admin-shell">
   <aside class="admin-sidebar" id="adminSidebar">
-    <div class="brand"><span>&#9632;</span> My Blog</div>
+    <div class="brand"><span>&#9632;</span> <?= e(\App\Models\SettingModel::get('site_name_' . \App\Core\Lang::getLang()) ?: (\App\Models\SettingModel::get('site_name_tr') ?: 'My Blog')) ?></div>
     <ul class="admin-nav">
       <li><a class="<?= $isActive('/admin') ?>" href="/admin"><span><span class="ico">&#128202;</span><?= e(__('admin_nav_dashboard')) ?></span></a></li>
       <li><a class="<?= $isActive('/admin/yazilar') ?>" href="/admin/yazilar"><span><span class="ico">&#128196;</span><?= e(__('admin_nav_articles')) ?></span><?php if ($pendingArticles > 0): ?><span class="badge"><?= (int) $pendingArticles ?></span><?php endif; ?></a></li>
@@ -154,15 +167,15 @@ textarea{min-height:90px;resize:vertical;}
       <li><a class="<?= $isActive('/admin/etiketler') ?>" href="/admin/etiketler"><span><span class="ico">&#127991;</span><?= e(__('admin_nav_tags')) ?></span></a></li>
       <li><a class="<?= $isActive('/admin/ayarlar') ?>" href="/admin/ayarlar"><span><span class="ico">&#9881;</span><?= e(__('admin_nav_settings')) ?></span></a></li>
     </ul>
-    <div style="padding:1rem 1.25rem;border-top:1px solid var(--admin-hover);">
-      <a href="/" style="color:var(--admin-muted);font-size:.85rem;">&#8592; <?= e(__('admin_view_site')) ?></a>
+    <div class="admin-sidebar__foot">
+      <a href="/">&#8592; <?= e(__('admin_view_site')) ?></a>
     </div>
   </aside>
 
   <div class="admin-main">
     <header class="admin-topbar">
-      <button class="menu-toggle" type="button" aria-label="Menu" onclick="document.getElementById('adminSidebar').classList.toggle('open')">&#9776;</button>
-      <div style="flex:1"></div>
+      <button class="menu-toggle" type="button" aria-label="<?= e(__('aria_menu')) ?>" onclick="document.getElementById('adminSidebar').classList.toggle('open')">&#9776;</button>
+      <div class="admin-topbar__spacer"></div>
       <div class="user">
         <span class="uname"><?= e($adminUser['name'] ?? __('admin_panel')) ?></span>
         <a class="logout" href="/cikis"><?= e(__('admin_logout')) ?></a>

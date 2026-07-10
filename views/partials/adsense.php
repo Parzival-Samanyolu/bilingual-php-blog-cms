@@ -24,7 +24,7 @@ if ($adsenseClient === '') {
 
 $slot = isset($ad_slot) ? trim((string) $ad_slot) : '';
 ?>
-<aside class="ad-block ad-block--in-content" aria-label="Advertisement">
+<aside class="ad-block ad-block--in-content" aria-label="<?= e(__('aria_advertisement')) ?>">
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="<?= e($adsenseClient) ?>"

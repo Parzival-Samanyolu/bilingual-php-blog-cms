@@ -84,6 +84,11 @@ final class AuthorDashboardController extends BaseController
         }
 
         $coverPath = $this->handleCoverUpload();
+        if ($coverPath === false) {
+            $this->redirect('/yazar-paneli/yeni');
+
+            return;
+        }
 
         $db       = Database::getInstance();
         $authorId = (int) $this->auth()->id();
@@ -168,6 +173,11 @@ final class AuthorDashboardController extends BaseController
 
         $articleId = (int) $article['id'];
         $coverPath = $this->handleCoverUpload();
+        if ($coverPath === false) {
+            $this->redirect('/yazar-paneli/duzenle/' . $articleId);
+
+            return;
+        }
         $db        = Database::getInstance();
 
         $db->beginTransaction();
@@ -395,7 +405,12 @@ final class AuthorDashboardController extends BaseController
     /**
      * Upload a cover image when one was provided; return its public path or null.
      */
-    private function handleCoverUpload(): ?string
+    /**
+     * @return string|false|null path on success, null when no file was provided,
+     *                           false when an upload was attempted but failed
+     *                           (an error flash is set; the caller must abort).
+     */
+    private function handleCoverUpload(): string|false|null
     {
         if (!isset($_FILES['cover']) || !is_array($_FILES['cover'])) {
             return null;
@@ -409,7 +424,7 @@ final class AuthorDashboardController extends BaseController
         } catch (RuntimeException $e) {
             Session::setFlash('error', __('flash_cover_upload_failed'));
 
-            return null;
+            return false;
         }
     }
 

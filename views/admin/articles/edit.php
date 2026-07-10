@@ -41,7 +41,7 @@ $statuses = ['draft', 'pending', 'published', 'rejected'];
       </div>
       <div class="form-row">
         <label><?= e(__('admin_field_content')) ?></label>
-        <div id="admin-editor" style="background:#fff;min-height:260px;"><?= $content ?></div>
+        <div id="admin-editor" class="admin-editor-host"><?= $content ?></div>
         <input type="hidden" name="content" id="content-input" value="<?= e($content) ?>">
       </div>
     </div>
@@ -93,7 +93,7 @@ $statuses = ['draft', 'pending', 'published', 'rejected'];
         <div class="form-row">
           <label for="cover_image"><?= e(__('admin_field_cover')) ?></label>
           <?php if (!empty($article['cover_image'])): ?>
-            <img src="<?= e($article['cover_image']) ?>" alt="" style="max-width:100%;border-radius:8px;margin-bottom:.6rem;">
+            <img src="<?= e($article['cover_image']) ?>" alt="" class="admin-img-preview">
           <?php endif; ?>
           <input type="file" id="cover_image" name="cover_image" accept="image/*">
           <p class="muted"><?= e(__('admin_field_cover_hint')) ?></p>
@@ -114,7 +114,7 @@ $statuses = ['draft', 'pending', 'published', 'rejected'];
     </div>
   </div>
 
-  <div style="display:flex;gap:.75rem;margin-bottom:2rem;">
+  <div class="admin-actions-bar">
     <button class="btn btn-primary" type="submit"><?= e(__('admin_action_save')) ?></button>
     <a class="btn" href="/admin/yazilar"><?= e(__('admin_action_cancel')) ?></a>
   </div>

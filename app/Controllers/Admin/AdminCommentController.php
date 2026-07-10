@@ -49,11 +49,12 @@ class AdminCommentController extends BaseController
         $comments = $db->fetchAll(
             "SELECT cm.id, cm.content, cm.is_approved, cm.created_at, cm.parent_id,
                     u.name AS user_name, u.username AS user_username,
-                    a.slug AS article_slug,
+                    a.slug AS article_slug, c.slug AS article_category_slug,
                     COALESCE(t.title, tb.title, a.slug) AS article_title
              FROM `comments` cm
              INNER JOIN `users` u ON u.id = cm.user_id
              INNER JOIN `articles` a ON a.id = cm.article_id
+             LEFT JOIN `categories` c ON c.id = a.category_id
              LEFT JOIN `article_translations` t  ON t.article_id = a.id AND t.lang = a.lang
              LEFT JOIN `article_translations` tb ON tb.article_id = a.id AND tb.lang = 'tr'
              {$whereSql}

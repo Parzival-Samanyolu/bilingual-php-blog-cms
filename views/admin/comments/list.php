@@ -16,11 +16,11 @@ $token = Session::getToken();
 
 <form class="filters" method="get" action="/admin/yorumlar">
   <div class="field">
-    <label for="f-appr">Durum</label>
+    <label for="f-appr"><?= e(__('admin_col_status')) ?></label>
     <select id="f-appr" name="is_approved">
       <option value=""><?= e(__('admin_filter_all')) ?></option>
-      <option value="0" <?= ($filters['is_approved'] ?? null) === 0 ? 'selected' : '' ?>>Beklemede</option>
-      <option value="1" <?= ($filters['is_approved'] ?? null) === 1 ? 'selected' : '' ?>>Onaylı</option>
+      <option value="0" <?= ($filters['is_approved'] ?? null) === 0 ? 'selected' : '' ?>><?= e(__('label_pending')) ?></option>
+      <option value="1" <?= ($filters['is_approved'] ?? null) === 1 ? 'selected' : '' ?>><?= e(__('label_approved')) ?></option>
     </select>
   </div>
   <div class="field">
@@ -31,7 +31,7 @@ $token = Session::getToken();
 <div class="table-wrap">
   <table class="data">
     <thead><tr>
-      <th>Yorum</th><th>Yazan</th><th>Yazı</th><th>Durum</th><th><?= e(__('admin_col_actions')) ?></th>
+      <th><?= e(__('admin_col_comment')) ?></th><th><?= e(__('admin_col_user')) ?></th><th><?= e(__('admin_col_article')) ?></th><th><?= e(__('admin_col_status')) ?></th><th><?= e(__('admin_col_actions')) ?></th>
     </tr></thead>
     <tbody>
     <?php if ($comments === []): ?>
@@ -40,18 +40,18 @@ $token = Session::getToken();
       <tr>
         <td><?= e(mb_substr((string) $c['content'], 0, 160)) ?></td>
         <td class="muted"><?= e((string) ($c['user_name'] ?? '')) ?> <span class="muted">@<?= e((string) ($c['user_username'] ?? '')) ?></span></td>
-        <td class="muted"><a href="/yazi/x/<?= e(rawurlencode((string) ($c['article_slug'] ?? ''))) ?>"><?= e((string) ($c['article_title'] ?? $c['article_slug'] ?? '')) ?></a></td>
-        <td><span class="badge-appr <?= $approved ? 'yes' : 'no' ?>"><?= $approved ? 'onaylı' : 'beklemede' ?></span></td>
+        <td class="muted"><a href="/yazi/<?= e(rawurlencode((string) ($c['article_category_slug'] ?? 'genel'))) ?>/<?= e(rawurlencode((string) ($c['article_slug'] ?? ''))) ?>"><?= e((string) ($c['article_title'] ?? $c['article_slug'] ?? '')) ?></a></td>
+        <td><span class="badge-appr <?= $approved ? 'yes' : 'no' ?>"><?= e($approved ? __('label_approved') : __('label_pending')) ?></span></td>
         <td class="actions">
           <?php if (!$approved): ?>
             <form method="post" action="/admin/yorumlar/<?= $cid ?>/onayla">
               <input type="hidden" name="_csrf" value="<?= e($token) ?>">
-              <button class="btn btn-sm btn-success" type="submit"><?= e(__('admin_action_approve') ?: 'Onayla') ?></button>
+              <button class="btn btn-sm btn-success" type="submit"><?= e(__('admin_action_approve')) ?></button>
             </form>
           <?php endif; ?>
           <form method="post" action="/admin/yorumlar/<?= $cid ?>/reddet" onsubmit="return confirm('<?= e(__('admin_confirm_delete')) ?>');">
             <input type="hidden" name="_csrf" value="<?= e($token) ?>">
-            <button class="btn btn-sm btn-danger" type="submit"><?= e(__('admin_action_reject') ?: 'Reddet') ?></button>
+            <button class="btn btn-sm btn-danger" type="submit"><?= e(__('admin_action_reject')) ?></button>
           </form>
         </td>
       </tr>

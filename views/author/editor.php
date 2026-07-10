@@ -1,7 +1,6 @@
 <?php
 /**
  * Author article editor (create + edit) with a Quill rich-text field.
- * Minimal correct version created during Integration/QA (original was missing).
  *
  * @var string $mode        'create' | 'edit'
  * @var string $formAction  POST target
@@ -37,49 +36,49 @@ $lang = (string) ($a['lang'] ?? \App\Core\Lang::getLang());
   </div>
 
   <div class="form-row">
-    <label for="lang">Dil / Language</label>
+    <label for="lang"><?= e(__('label_language')) ?></label>
     <select id="lang" name="lang">
-      <option value="tr" <?= $lang === 'tr' ? 'selected' : '' ?>>Türkçe (TR)</option>
-      <option value="en" <?= $lang === 'en' ? 'selected' : '' ?>>English (EN)</option>
+      <option value="tr" <?= $lang === 'tr' ? 'selected' : '' ?>><?= e(__('lang_tr')) ?></option>
+      <option value="en" <?= $lang === 'en' ? 'selected' : '' ?>><?= e(__('lang_en')) ?></option>
     </select>
   </div>
 
   <div class="form-row">
-    <label>İçerik / Content</label>
-    <div id="editor"><?= $content /* trusted author HTML re-hydrated into Quill */ ?></div>
-    <textarea name="content" id="contentField" style="display:none;"><?= e($content) ?></textarea>
+    <label><?= e(__('admin_field_content')) ?></label>
+    <div id="editor"><?= $content /* sanitized author HTML re-hydrated into Quill */ ?></div>
+    <textarea name="content" id="contentField" hidden><?= e($content) ?></textarea>
   </div>
 
   <div class="form-row">
-    <label for="excerpt">Özet / Excerpt</label>
+    <label for="excerpt"><?= e(__('admin_field_excerpt')) ?></label>
     <textarea id="excerpt" name="excerpt" maxlength="600"><?= e((string) ($a['excerpt'] ?? '')) ?></textarea>
   </div>
 
   <div class="form-row">
     <label for="tags"><?= e(__('label_tags')) ?></label>
-    <input type="text" id="tags" name="tags" value="<?= e((string) ($tagsString ?? '')) ?>" placeholder="php, tarih, ...">
-    <p class="hint">virgülle ayırın / comma separated</p>
+    <input type="text" id="tags" name="tags" value="<?= e((string) ($tagsString ?? '')) ?>" placeholder="<?= e(__('editor_tags_placeholder')) ?>">
+    <p class="hint"><?= e(__('admin_field_tags_hint')) ?></p>
   </div>
 
   <div class="form-row">
-    <label for="cover">Kapak / Cover</label>
+    <label for="cover"><?= e(__('admin_field_cover')) ?></label>
     <input type="file" id="cover" name="cover" accept="image/*">
     <?php if (!empty($a['cover_image'])): ?>
-      <p class="hint"><img src="<?= e((string) $a['cover_image']) ?>" alt="" style="max-height:80px;border-radius:6px;"></p>
+      <p class="hint"><img class="editor-cover-preview" src="<?= e((string) $a['cover_image']) ?>" alt=""></p>
     <?php endif; ?>
   </div>
 
   <div class="form-row">
-    <label for="meta_title">Meta title</label>
+    <label for="meta_title"><?= e(__('admin_field_meta_title')) ?></label>
     <input type="text" id="meta_title" name="meta_title" maxlength="160" value="<?= e((string) ($a['meta_title'] ?? '')) ?>">
   </div>
 
   <div class="form-row">
-    <label for="meta_description">Meta description</label>
+    <label for="meta_description"><?= e(__('admin_field_meta_description')) ?></label>
     <textarea id="meta_description" name="meta_description" maxlength="320"><?= e((string) ($a['meta_description'] ?? '')) ?></textarea>
   </div>
 
-  <button class="btn btn-primary" type="submit">Kaydet / Save</button>
+  <button class="btn btn-primary" type="submit"><?= e(__('btn_save')) ?></button>
 </form>
 
 <script>

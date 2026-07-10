@@ -44,12 +44,12 @@ $isAdmin = $role === 'admin';
             <div class="site-search__suggest js-search-suggest" hidden></div>
         </form>
 
-        <button type="button" class="site-header__nav-toggle js-nav-toggle" aria-label="Menu" aria-expanded="false">
+        <button type="button" class="site-header__nav-toggle js-nav-toggle" aria-label="<?= e(__('aria_menu')) ?>" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
 
         <nav class="site-nav js-nav" aria-label="<?= e(__('nav_home')) ?>">
-            <div class="lang-switch" role="group" aria-label="Language">
+            <div class="lang-switch" role="group" aria-label="<?= e(__('aria_language')) ?>">
                 <button type="button"
                         class="lang-switch__pill<?= $hdrLang === 'tr' ? ' is-active' : '' ?>"
                         data-lang="tr"<?= $hdrLang === 'tr' ? ' aria-current="true"' : '' ?>>TR</button>
